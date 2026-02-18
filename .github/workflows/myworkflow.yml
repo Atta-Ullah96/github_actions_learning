@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-       - name: expression 
-         run : ${{4 > 2}}
-      
-
+       - name: github context object 
+         run : ${{toJson(github)}}
+       - name: env context obj
+         run : ${{toJson(env)}}
+    
   second-job:
     runs-on: ubuntu-latest
     needs: first-job
