@@ -31,3 +31,15 @@ jobs:
           python3 --version
           docker -v
           git --version
+
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: list Files
+        run : ls -a 
+      
+      - uses: actions/checkout@v6
+      - name: list files
+        run: ls -a
+       
+      
