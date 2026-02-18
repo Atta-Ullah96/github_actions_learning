@@ -1,0 +1,33 @@
+name: System Information Check
+
+# This allows you to run the job manually from the "Actions" tab
+on: workflow_dispatch
+
+jobs:
+  display-system-info:
+    # Fix: Ensure this is spelled 'ubuntu-latest'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print OS Information
+        run: |
+          echo "### Operating System Details ###"
+          lsb_release -a
+          uname -a
+
+      - name: Print Hardware Resources
+        run: |
+          echo "### CPU Information ###"
+          lscpu | grep "Model name"
+          echo "### Memory (RAM) ###"
+          free -h
+          echo "### Disk Space ###"
+          df -h | grep "^/dev/"
+
+      - name: Check Installed Tools
+        run: |
+          echo "### Pre-installed Software versions ###"
+          node -v
+          python3 --version
+          docker -v
+          git --version
